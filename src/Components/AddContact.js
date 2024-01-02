@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 
-export const AddContact = () => {
+export const AddContact = ({ addContact }) => {
   const [contactData, setContactData] = useState({ name: "", email: "" });
 
   const handleChange = (e) => {
@@ -11,12 +11,19 @@ export const AddContact = () => {
       setContactData({ ...contactData, email: e.target.value });
     }
   };
-  console.log(contactData);
+  const handleAdd = () => {
+    if (contactData.name === "" || contactData.email === "") {
+      alert("Please fill all the details");
+    } else {
+      addContact(contactData);
+      setContactData({ name: "", email: "" });
+    }
+  };
+
   return (
     <div className="contact-wrapper">
-      <h2>Add Contact</h2>
+      {/* <h2>Add Contact</h2> */}
       <form>
-        <label>Name:</label>
         <input
           type="text"
           placeholder="Enter name"
@@ -25,7 +32,7 @@ export const AddContact = () => {
           onChange={handleChange}
         />
         <br />
-        <label>Email:</label>
+
         <input
           type="email"
           placeholder="Enter email"
@@ -35,7 +42,9 @@ export const AddContact = () => {
         />
         <br />
       </form>
-      <button className="btn">Add Contact </button>
+      <button className="btn" onClick={handleAdd}>
+        Add
+      </button>
     </div>
   );
 };
