@@ -1,15 +1,21 @@
-import React, { Fragment } from "react";
 import "../App.css";
-export const ContactList = ({ contact }) => {
+import DeleteIcon from "@mui/icons-material/Delete";
+
+export const ContactList = (props) => {
+  const { contact, removeContact } = props;
+
   console.log("from contactList", contact);
   return (
     <div className="contact-list">
       {/* <h2>ContactList</h2> */}
       {contact.map((val) => {
         return (
-          <div className="contact">
-            <div>{val.name}</div>
-            <div>{val.email}</div>
+          <div key={val.id} className="contact">
+            <div>{val.data.name}</div>
+            <div>{val.data.email}</div>
+            <span onClick={() => removeContact(val.id)}>
+              <DeleteIcon />
+            </span>
           </div>
         );
       })}
