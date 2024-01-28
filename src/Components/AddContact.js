@@ -12,8 +12,13 @@ export const AddContact = ({ addContact }) => {
     }
   };
   const handleAdd = () => {
-    if (contactData.name === "" || contactData.email === "") {
-      alert("Please fill all the details");
+    // Email format validation using a regular expression
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (contactData.name.trim() === "" || contactData.email.trim() === "") {
+      alert("Please fill in all the details");
+    } else if (!emailRegex.test(contactData.email.trim())) {
+      alert("Please enter a valid email address");
     } else {
       addContact(contactData);
       setContactData({ name: "", email: "" });
@@ -22,10 +27,10 @@ export const AddContact = ({ addContact }) => {
 
   return (
     <div className="contact-wrapper">
-      {/* <h2>Add Contact</h2> */}
       <form>
         <input
           type="text"
+          required
           placeholder="Enter name"
           name="name"
           value={contactData.name}
@@ -35,12 +40,12 @@ export const AddContact = ({ addContact }) => {
 
         <input
           type="email"
+          required
           placeholder="Enter email"
           name="email"
           value={contactData.email}
           onChange={handleChange}
         />
-        <br />
       </form>
       <button className="btn" onClick={handleAdd}>
         Add

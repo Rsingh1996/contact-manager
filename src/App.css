@@ -12,14 +12,15 @@ body {
 }
 
 header {
-  background-color: #f5ba13;
+  background-color: #96a8e1;
   margin: auto -16px;
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
-  color: #fff;
+  text-align: center;
+  color: #000000;
   padding: 0 16px;
   font-family: "McLaren", cursive;
   font-weight: 200;
@@ -61,12 +62,15 @@ form input {
   margin-left: 10px;
   margin-bottom: 5px;
 }
+br {
+  border: 1rem solid;
+}
 
 .btn {
   position: absolute;
   right: 420px;
   top: 188px;
-  background: #f5ba13;
+  background: #96a8e1;
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -89,4 +93,7 @@ form input {
   padding: 10px;
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+
+@media screen and (max-width: 767px) {
 }
